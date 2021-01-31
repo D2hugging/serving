@@ -44,3 +44,42 @@ cc_test(
         
     ],
 )
+
+cc_library(
+    name = "servable_handle",
+    hdrs = ["servable_handle.h"],
+    visibility = [
+        "//visibility:public",
+    ],
+    deps = [
+        ":loader",
+        "//util:any_ptr",
+        # "@org_tensorflow//tensorflow/core:lib",
+    ],
+)
+
+cc_library(
+    name = "source",
+    hdrs = ["source.h"],
+    visibility = [
+        "//visibility:public",
+    ],
+    deps = [
+        ":servable_data",
+        # "@org_tensorflow//tensorflow/core:lib",
+    ],
+)
+
+cc_library(
+    name = "loader",
+    hdrs = ["loader.h"],
+    visibility = [
+        "//visibility:public",
+    ],
+    deps = [
+        ":source",
+        # "//tensorflow_serving/resources:resources_cc_proto",
+        "//util:any_ptr",
+        # "@org_tensorflow//tensorflow/core:lib",
+    ],
+)

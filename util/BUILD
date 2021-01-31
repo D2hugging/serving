@@ -26,3 +26,9 @@ cc_library(
         "@com_google_absl//absl/strings",
     ],
 )
+
+cc_library(
+    name = "any_ptr",
+    hdrs = ["any_ptr.h"],
+    visibility = ["//visibility:public"],
+)
