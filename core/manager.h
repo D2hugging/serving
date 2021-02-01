@@ -1,0 +1,5 @@
+#ifndef _SERVING_CORE_MANAGER_H_
+#define _SERVING_CORE_MANAGER_H_
+
+
+#endif

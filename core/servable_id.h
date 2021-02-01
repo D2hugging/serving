@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include "util/hash.h"
+#include "absl/strings/str_cat.h"
 
 
 
@@ -13,11 +14,7 @@ struct ServableId {
     std::string name;
     int64_t version;
     std::string DebugString() const {
-        std::string str = "{name: ";
-        str.append(name);
-        str.append(" version: ");
-        str.append(std::to_string(version));
-        return str;
+        return absl::StrCat("{name: ", name, " version: ", version);
     }
 
 };

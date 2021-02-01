@@ -8,6 +8,7 @@ cc_library(
     ],
     deps = [
         "//util:hash",
+        "@com_google_absl//absl/strings",
     ],
 )
 
