@@ -7,6 +7,7 @@
 #include <functional>
 
 #include "absl/synchronization/mutex.h"
+#include "absl/base/thread_annotations.h"
 
 #include "util/micros.h"
 
@@ -61,7 +62,8 @@ class ThreadPool {
   DISALLOW_COPY_AND_ASSIGN(ThreadPool);
 
  private:
-  bool Available() const {
+  bool Available() EXCLUSIVE_LOCKS_REQUIRED(mtx_) {
+    //   absl::MutexLock l(&mtx_);
       return !queue_.empty();
   }
 
@@ -83,7 +85,7 @@ class ThreadPool {
 
  private:
   absl::Mutex mtx_;
-  std::queue<std::function<void()>> queue_;
+  std::queue<std::function<void()>> queue_ GUARDED_BY(mtx_);
   std::vector<std::thread> threads_;
 };
 
